@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelArt Converter</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="lweaxo.css">
+    <link rel="icon" href="https://emojicdn.elk.sh/🎨?style=google" type="image/png">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span class="en">PixelArt Converter</span>
+                <span class="de" style="display: none;">PixelArt Konverter</span>
+                <span class="tr" style="display: none;">PixelArt Dönüştürücü</span>
+            </div>
+            <div class="controls">
+                <button class="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </button>
+                <div class="language-selector">
+                    <button class="language-btn">
+                        <i class="fas fa-globe"></i>
+                        <span class="en">English</span>
+                        <span class="de" style="display: none;">Deutsch</span>
+                        <span class="tr" style="display: none;">Türkçe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="language-dropdown">
+                        <div class="language-option" data-lang="en">
+                            <i class="fas fa-check en" style="display: inline-block;"></i>
+                            <i class="fas fa-check de" style="display: none;"></i>
+                            <i class="fas fa-check tr" style="display: none;"></i>
+                            English
+                        </div>
+                        <div class="language-option" data-lang="de">
+                            <i class="fas fa-check en" style="display: none;"></i>
+                            <i class="fas fa-check de" style="display: none;"></i>
+                            <i class="fas fa-check tr" style="display: none;"></i>
+                            Deutsch
+                        </div>
+                        <div class="language-option" data-lang="tr">
+                            <i class="fas fa-check en" style="display: none;"></i>
+                            <i class="fas fa-check de" style="display: none;"></i>
+                            <i class="fas fa-check tr" style="display: none;"></i>
+                            Türkçe
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section class="upload-section">
+                <div class="upload-content">
+                    <div class="upload-icon">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                    </div>
+                    <h2 class="upload-title en">Upload Your Image</h2>
+                    <h2 class="upload-title de" style="display: none;">Bild hochladen</h2>
+                    <h2 class="upload-title tr" style="display: none;">Resminizi Yükleyin</h2>
+                    <p class="upload-description en">Drag & drop your image here or click to browse files</p>
+                    <p class="upload-description de" style="display: none;">Ziehen Sie Ihr Bild hierher oder klicken Sie, um Dateien auszuwählen</p>
+                    <p class="upload-description tr" style="display: none;">Resminizi buraya sürükleyin veya dosyalara göz atmak için tıklayın</p>
+                    <input type="file" id="fileInput" class="file-input" accept="image/*">
+                    <label for="fileInput" class="upload-btn">
+                        <i class="fas fa-folder-open"></i>
+                        <span class="en">Choose File</span>
+                        <span class="de" style="display: none;">Datei auswählen</span>
+                        <span class="tr" style="display: none;">Dosya Seç</span>
+                    </label>
+                </div>
+            </section>
+
+            <section class="settings-section">
+                <h2 class="settings-title">
+                    <i class="fas fa-sliders-h"></i>
+                    <span class="en">Pixelation Settings</span>
+                    <span class="de" style="display: none;">Pixel-Einstellungen</span>
+                    <span class="tr" style="display: none;">Pixel Ayarları</span>
+                </h2>
+                
+                <div class="settings-group">
+                    <label class="settings-label en">Pixel Size</label>
+                    <label class="settings-label de" style="display: none;">Pixel-Größe</label>
+                    <label class="settings-label tr" style="display: none;">Pixel Boyutu</label>
+                    <div class="slider-container">
+                        <input type="range" min="2" max="20" value="8" class="slider" id="pixelSize">
+                        <span class="slider-value" id="pixelSizeValue">8</span>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label class="settings-label en">Color Palette</label>
+                    <label class="settings-label de" style="display: none;">Farbpalette</label>
+                    <label class="settings-label tr" style="display: none;">Renk Paleti</label>
+                    <div class="slider-container">
+                        <input type="range" min="2" max="256" value="32" class="slider" id="colorPalette">
+                        <span class="slider-value" id="colorPaletteValue">32</span>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label class="settings-label en">Effects</label>
+                    <label class="settings-label de" style="display: none;">Effekte</label>
+                    <label class="settings-label tr" style="display: none;">Efektler</label>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="dithering" class="checkbox" checked>
+                        <label for="dithering" class="checkbox-label en">Dithering</label>
+                        <label for="dithering" class="checkbox-label de" style="display: none;">Dithering</label>
+                        <label for="dithering" class="checkbox-label tr" style="display: none;">Titreşim</label>
+                    </div>
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="outline" class="checkbox">
+                        <label for="outline" class="checkbox-label en">Outline</label>
+                        <label for="outline" class="checkbox-label de" style="display: none;">Umriss</label>
+                        <label for="outline" class="checkbox-label tr" style="display: none;">Dış Çizgi</label>
+                    </div>
+                </div>
+                
+                <div class="settings-group">
+                    <label class="settings-label en">Background Color</label>
+                    <label class="settings-label de" style="display: none;">Hintergrundfarbe</label>
+                    <label class="settings-label tr" style="display: none;">Arkaplan Rengi</label>
+                    <div class="color-picker">
+                        <span class="color-label en">Transparent</span>
+                        <span class="color-label de" style="display: none;">Transparent</span>
+                        <span class="color-label tr" style="display: none;">Şeffaf</span>
+                        <input type="checkbox" id="transparentBg" class="checkbox" checked>
+                    </div>
+                    <div class="color-picker">
+                        <span class="color-label en">Custom</span>
+                        <span class="color-label de" style="display: none;">Benutzerdefiniert</span>
+                        <span class="color-label tr" style="display: none;">Özel</span>
+                        <input type="color" id="bgColor" class="color-input" value="#ffffff" disabled>
+                    </div>
+                </div>
+            </section>
+
+            <section class="preview-section">
+                <h2 class="preview-title">
+                    <i class="fas fa-eye"></i>
+                    <span class="en">Preview</span>
+                    <span class="de" style="display: none;">Vorschau</span>
+                    <span class="tr" style="display: none;">Önizleme</span>
+                </h2>
+                
+                <div class="preview-container">
+                    <div class="image-wrapper">
+                        <canvas id="originalCanvas" class="original-image" style="display: none;"></canvas>
+                        <div class="image-label en">Original</div>
+                        <div class="image-label de" style="display: none;">Original</div>
+                        <div class="image-label tr" style="display: none;">Orijinal</div>
+                    </div>
+                    
+                    <div class="image-wrapper">
+                        <canvas id="pixelatedCanvas" class="pixelated-image" style="display: none;"></canvas>
+                        <div class="image-label en">Pixelated</div>
+                        <div class="image-label de" style="display: none;">Pixeliert</div>
+                        <div class="image-label tr" style="display: none;">Pixel</div>
+                    </div>
+                </div>
+                
+                <div class="action-btns">
+                    <button id="downloadBtn" class="action-btn" disabled>
+                        <i class="fas fa-download"></i>
+                        <span class="en">Download</span>
+                        <span class="de" style="display: none;">Herunterladen</span>
+                        <span class="tr" style="display: none;">İndir</span>
+                    </button>
+                    <button id="resetBtn" class="action-btn secondary">
+                        <i class="fas fa-redo"></i>
+                        <span class="en">Reset</span>
+                        <span class="de" style="display: none;">Zurücksetzen</span>
+                        <span class="tr" style="display: none;">Sıfırla</span>
+                    </button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <a href="https://github.com/LWEAXO" class="github-btn" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-github"></i>
+    </a>
+
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p class="loading-text en">Processing image...</p>
+        <p class="loading-text de" style="display: none;">Bild wird verarbeitet...</p>
+        <p class="loading-text tr" style="display: none;">Resim işleniyor...</p>
+    </div>
+
+    <script src="lweaxo.js"></script>
+</body>
+
+<!-- lweaxo tarafından yapılmıştır <3 -->
+</html>
